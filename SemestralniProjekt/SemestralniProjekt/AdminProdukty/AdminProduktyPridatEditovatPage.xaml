@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SemestralniProjekt.AdminProdukty.AdminProduktyPridatEditovatPage"
+             BackgroundColor="DarkSlateGray">
+
+    <ContentPage.Content>
+
+        <StackLayout Orientation="Vertical">
+
+            <Label Text="{Binding HlavniLabel}"
+                VerticalOptions="Start" 
+                HorizontalOptions="CenterAndExpand" FontSize="Large" FontAttributes="Bold" TextColor="White"/>
+
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Label Text="Id:" FontAttributes="Bold" WidthRequest="100" VerticalOptions="Center" FontSize="20" TextColor="White"/>
+                <Label Text="{Binding ProduktEditovany.Id}" WidthRequest="250" VerticalOptions="Center" FontSize="20" TextColor="White"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Label Text="Název:" FontAttributes="Bold" WidthRequest="100"  VerticalOptions="Center" FontSize="20" TextColor="White"/>
+                <Entry Text="{Binding ProduktEditovany.Nazev}" WidthRequest="250" VerticalOptions="Center" FontSize="20" TextColor="White"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Label Text="Kategorie:" FontAttributes="Bold" WidthRequest="100"  VerticalOptions="Center" FontSize="20" TextColor="White"/>
+                <Entry Text="{Binding ProduktEditovany.Kategorie}"  WidthRequest="250" VerticalOptions="Center" FontSize="20" TextColor="White"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Label Text="Popis:" FontAttributes="Bold" WidthRequest="100"  VerticalOptions="Center" FontSize="20" TextColor="White"/>
+                <Entry Text="{Binding ProduktEditovany.Popis}"  WidthRequest="250"  VerticalOptions="Center" FontSize="20" TextColor="White"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Label Text="Cena:"  FontAttributes="Bold" WidthRequest="100"  VerticalOptions="Center" FontSize="20" TextColor="White"/>
+                <Entry Text="{Binding ProduktEditovany.Cena}"  WidthRequest="250" VerticalOptions="Center" FontSize="20" TextColor="White" Keyboard="Numeric"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Label Text="Barva:"  FontAttributes="Bold" WidthRequest="100"  VerticalOptions="Center" FontSize="20" TextColor="White"/>
+                <Entry Text="{Binding ProduktEditovany.Barva}"  WidthRequest="250" VerticalOptions="Center" FontSize="20" TextColor="White"/>
+            </StackLayout>
+
+            <Button Text="Potvrdit" Command="{Binding CommandPotvrzeni}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="20" TextColor="White" BackgroundColor="#03A9F4" FontAttributes="Bold"></Button>
+
+        </StackLayout>
+
+    </ContentPage.Content>
+
+</ContentPage>

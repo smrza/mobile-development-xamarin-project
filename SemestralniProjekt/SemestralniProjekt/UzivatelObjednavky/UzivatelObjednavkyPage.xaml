@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SemestralniProjekt.UzivatelObjednavky.UzivatelObjednavkyPage"
+             Title="Objednávky"
+             BackgroundColor="DarkSlateGray">
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView x:Name="listViewSeznamObjednavek" ItemsSource="{Binding SeznamObjednavkaObservable}" 
+               SelectionMode="Single"
+                  
+               IsPullToRefreshEnabled="true"
+               RefreshCommand="{Binding CommandRefreshProduktu}"
+                  
+               
+               RowHeight="90"
+                      
+               HorizontalOptions="Center"
+               VerticalOptions="FillAndExpand">
+
+
+                <ListView.ItemTemplate>
+
+                    <DataTemplate>
+
+                        <ViewCell>
+                            <Grid HorizontalOptions="CenterAndExpand">
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="25" />
+                                    <RowDefinition Height="25" />
+                                    <RowDefinition Height="25" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="80" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="30" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.Row="0" Grid.Column="0" Text="Id:" FontAttributes="Bold" FontSize="20" TextColor="White"/>
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding Id}" FontSize="20" TextColor="White"/>
+                                <Label Grid.Row="2" Grid.Column="0" Text="Stav:" FontAttributes="Bold" FontSize="20" TextColor="White"/>
+                                <Label Grid.Row="2" Grid.Column="1" Text="{Binding Stav}" FontSize="20" TextColor="White"/>
+                                <Label Grid.Row="0" Grid.Column="2" Text="Datum:"  FontAttributes="Bold" FontSize="20"  VerticalOptions="Start" HorizontalOptions="Center" Grid.ColumnSpan="2" TextColor="White"/>
+                                <Label Grid.Row="1" Grid.Column="2" Text="{Binding Datum}" FontSize="20" TextColor="Red" VerticalOptions="Start" HorizontalOptions="Center" Grid.ColumnSpan="2"/>
+
+
+
+                            </Grid>
+
+
+
+
+                        </ViewCell>
+                    </DataTemplate>
+
+                </ListView.ItemTemplate>
+
+
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

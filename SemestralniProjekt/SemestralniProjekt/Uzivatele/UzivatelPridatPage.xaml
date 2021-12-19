@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SemestralniProjekt.Uzivatele.UzivatelPridatPage"
+             BackgroundColor="DarkSlateGray">
+
+    <ContentPage.Content>
+
+        <StackLayout Orientation="Vertical">
+
+            <Label Text="{Binding HlavniLabel}"
+                VerticalOptions="Start" 
+                HorizontalOptions="CenterAndExpand" FontSize="Large" TextColor="White"/>
+
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Label Text="Id:" FontAttributes="Bold" WidthRequest="100" VerticalOptions="Center" FontSize="20" TextColor="White"/>
+                <Label Text="{Binding UzivatelEditovany.Id}" WidthRequest="250" VerticalOptions="Center" FontSize="20" TextColor="White"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Label Text="Jméno:" FontAttributes="Bold" WidthRequest="100"  VerticalOptions="Center" FontSize="20" TextColor="White"/>
+                <Entry Text="{Binding UzivatelEditovany.Jmeno}" WidthRequest="250" VerticalOptions="Center" FontSize="20" TextColor="White"/>
+            </StackLayout>
+
+            <Button Text="Potvrdit" Command="{Binding CommandPotvrzeni}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" BackgroundColor="#03A9F4" FontAttributes="Bold" FontSize="20"></Button>
+
+        </StackLayout>
+
+    </ContentPage.Content>
+
+</ContentPage>

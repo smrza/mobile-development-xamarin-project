@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SemestralniProjekt.Uzivatele.SeznamUzivateluPage"
+             Title="Uživatelé"
+             BackgroundColor="DarkSlateGray">
+
+
+    <ContentPage.ToolbarItems>
+
+        <!-- ToolbarItem pro pridani produktu -->
+        <!-- (mimochodem vsimnete si, ze se zobrazi jen pokud je zobrazen obsah teto stranky - husty co?) -->
+        <ToolbarItem Text="+"
+                 Order="Primary"
+                 Priority="1"
+                 Clicked="PridaniUzivatele_Clicked"/>
+
+    </ContentPage.ToolbarItems>
+
+
+    <ContentPage.Content>
+
+        <StackLayout>
+
+            <!--<Label Text="Seznam uživatelů"
+                   FontSize="Large"
+                   TextColor="White"
+                   VerticalOptions="Start" 
+                   HorizontalOptions="Center"/>-->
+
+            <!-- ListView je nabindovan na observable seznam produktu -->
+            <!-- IsPullToRefreshEnabled="true" znamená, ze je uzivateli umozneno obnovit data v ListView prejetim prstem zvrchu dolu pres ListView (tzv. Pull to refresh) -->
+            <!-- Pro plnou funkcionalitu je treba nabindovat command na RefreshCommand, ktery urcuje, co se provede pri refreshovani a pak rekne aplikaci, ze byl refresh dokoncen -->
+            <ListView x:Name="listViewSeznamUzivatelu" ItemsSource="{Binding SeznamUzivateluObservable}" ItemSelected="ListView_ItemSelected"
+               SelectionMode="Single"
+                  
+                  
+               IsPullToRefreshEnabled="true"
+               RefreshCommand="{Binding CommandRefreshUzivatelu}"
+                  
+               
+               RowHeight="60"
+                      
+               HorizontalOptions="Center"
+               VerticalOptions="FillAndExpand">
+
+
+                <!-- ListView.ItemTemplate slouzi k vlastnimu definovani vzhledu jednotlivych polozek v ListView -->
+                <ListView.ItemTemplate>
+
+                    <!-- DataTemplate urcuji cast sablony s daty -->
+                    <DataTemplate>
+                        <!-- Pod DataTemplate musi byt prvek z kategorie "Cells" (bunky). -->
+                        <!-- V tomto pripade je zvolen ViewCell, do ktereho lze vkládat prvky v podstate stejně jako do ContentPage. -->
+                        <ViewCell>
+                            <Grid HorizontalOptions="CenterAndExpand">
+
+                                <!-- vyska pro jednotlive radky (3 radky = 3 RowDefinition). Doporučuje se zadávat na fixní hodnoty (aplikace pak nemusí provádět výpočty velikosti). -->
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="25" />
+                                    <RowDefinition Height="25" />
+                                    <!--<RowDefinition Height="25" />-->
+                                </Grid.RowDefinitions>
+                                <!-- sirka pro jednotlive sloupce (5 sloupcu = 5 ColumnDefinition). Doporučuje se zadávat na fixní hodnoty (aplikace pak nemusí provádět výpočty velikosti). -->
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="80" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="30" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.Row="0" Grid.Column="0" Text="Id:" FontAttributes="Bold" FontSize="20" TextColor="White"/>
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding Id}" FontSize="20" TextColor="White"/>
+                                <Label Grid.Row="1" Grid.Column="0" Text="Jméno:" FontAttributes="Bold" FontSize="20" TextColor="White"/>
+                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding Jmeno}" FontSize="20" TextColor="White"/>
+
+
+                            </Grid>
+
+
+                        </ViewCell>
+                    </DataTemplate>
+
+                </ListView.ItemTemplate>
+
+
+            </ListView>
+
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

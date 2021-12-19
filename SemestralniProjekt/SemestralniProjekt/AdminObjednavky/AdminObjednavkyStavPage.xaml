@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SemestralniProjekt.AdminObjednavky.AdminObjednavkyStavPage"
+             Title="Změna stavu objednávky"
+             x:Name="stavChange"
+             BackgroundColor="DarkSlateGray">
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <Button  Text="POTVRZENÍ"
+                                    Command="{Binding BindingContext.CommandPotvrzeni, Source={x:Reference stavChange}}" 
+                                    CommandParameter="{Binding .}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                                    FontSize="20" BackgroundColor="Blue" TextColor="White" FontAttributes="Bold"/>
+            <Button  Text="ODESLÁNÍ" 
+                                    Command="{Binding BindingContext.CommandOdeslani, Source={x:Reference stavChange}}" 
+                                    CommandParameter="{Binding .}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                                    FontSize="20" BackgroundColor="Green" TextColor="White" FontAttributes="Bold"/>
+            <Button Text="ZRUŠENÍ" 
+                                    Command="{Binding BindingContext.CommandZruseni, Source={x:Reference stavChange}}" 
+                                    CommandParameter="{Binding .}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                                    FontSize="20" BackgroundColor="Red" TextColor="White" FontAttributes="Bold"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

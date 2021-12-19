@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SemestralniProjekt.UzivatelProdukty.UzivatelProduktyPage"
+             Title="Produkty"
+             BackgroundColor="DarkSlateGray">
+    <ContentPage.ToolbarItems>
+
+        <!-- ToolbarItem pro pridani produktu -->
+        <!-- (mimochodem vsimnete si, ze se zobrazi jen pokud je zobrazen obsah teto stranky - husty co?) -->
+        <!--<ToolbarItem Text="+"
+                 Order="Primary"
+                 Priority="1"
+                 Clicked="PridaniProduktuDoKosiku_Clicked"/>-->
+
+    </ContentPage.ToolbarItems>
+
+
+    <ContentPage.Content>
+
+        <StackLayout>
+
+            <Label Text="{Binding MostSoldItem}"
+                   FontSize="Large"
+                   VerticalOptions="Start" 
+                   HorizontalOptions="Center" TextColor="White"/>
+            
+            <!--<Label Text="Produkty"
+                   FontSize="Medium"
+                   VerticalOptions="Start" 
+                   HorizontalOptions="Center"/>-->
+
+            <!-- ListView je nabindovan na observable seznam produktu -->
+            <!-- IsPullToRefreshEnabled="true" znamená, ze je uzivateli umozneno obnovit data v ListView prejetim prstem zvrchu dolu pres ListView (tzv. Pull to refresh) -->
+            <!-- Pro plnou funkcionalitu je treba nabindovat command na RefreshCommand, ktery urcuje, co se provede pri refreshovani a pak rekne aplikaci, ze byl refresh dokoncen -->
+            <ListView x:Name="listViewSeznamProduktu" ItemsSource="{Binding SeznamProduktuObservable}" ItemSelected="ListView_ItemSelected"
+               SelectionMode="Single"
+                  
+                  
+               IsPullToRefreshEnabled="true"
+               RefreshCommand="{Binding CommandRefreshProduktu}"
+                  
+               
+               RowHeight="120"
+                      
+               HorizontalOptions="Center"
+               VerticalOptions="FillAndExpand">
+
+
+                <!-- ListView.ItemTemplate slouzi k vlastnimu definovani vzhledu jednotlivych polozek v ListView -->
+                <ListView.ItemTemplate>
+
+                    <!-- DataTemplate urcuji cast sablony s daty -->
+                    <DataTemplate>
+                        <!-- Pod DataTemplate musi byt prvek z kategorie "Cells" (bunky). -->
+                        <!-- V tomto pripade je zvolen ViewCell, do ktereho lze vkládat prvky v podstate stejně jako do ContentPage. -->
+                        <ViewCell>
+                            <Grid HorizontalOptions="CenterAndExpand">
+
+                                <!-- vyska pro jednotlive radky (3 radky = 3 RowDefinition). Doporučuje se zadávat na fixní hodnoty (aplikace pak nemusí provádět výpočty velikosti). -->
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="25" />
+                                    <RowDefinition Height="25" />
+                                    <RowDefinition Height="25" />
+                                    <RowDefinition Height="25" />
+                                </Grid.RowDefinitions>
+                                <!-- sirka pro jednotlive sloupce (5 sloupcu = 5 ColumnDefinition). Doporučuje se zadávat na fixní hodnoty (aplikace pak nemusí provádět výpočty velikosti). -->
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="80" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="30" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.Row="0" Grid.Column="0" Text="Id:" FontAttributes="Bold" FontSize="20" TextColor="White"/>
+                                <Label Grid.Row="1" Grid.Column="0" Text="{Binding Id}" FontSize="20" TextColor="White"/>
+                                <Label Grid.Row="0" Grid.Column="1" Text="Nazev:" FontAttributes="Bold" FontSize="20" TextColor="White"/>
+                                <Label Grid.Row="0" Grid.Column="2" Text="{Binding Název}" FontSize="20" TextColor="White"/>
+                                <Label Grid.Row="1" Grid.Column="1" Text="Kategorie:" FontAttributes="Bold" FontSize="20" TextColor="White"/>
+                                <Label Grid.Row="1" Grid.Column="2" Text="{Binding Kategorie}" FontSize="20" TextColor="White"/>
+                                <Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="1" Text="Popis:" FontAttributes="Bold" FontSize="20" TextColor="White"/>
+                                <Label Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Text="{Binding Popis}" FontSize="20" TextColor="White"/>
+                                <Label Grid.Row="0" Grid.Column="3" Text="Cena:"  FontAttributes="Bold" FontSize="20"  VerticalOptions="Start" HorizontalOptions="Center" TextColor="White"/>
+                                <Label Grid.Row="1" Grid.Column="3" Text="{Binding Cena}" FontSize="20" TextColor="Red" VerticalOptions="Start" HorizontalOptions="Center"/>
+                                <Label Grid.Row="3" Grid.Column="0" Text="Barva:"  FontAttributes="Bold" FontSize="20"  VerticalOptions="Start" HorizontalOptions="Center" TextColor="White"/>
+                                <Label Grid.Row="3" Grid.Column="1" Text="{Binding Barva}" FontSize="20" TextColor="White" VerticalOptions="Start" HorizontalOptions="Center"/>
+
+
+                            </Grid>
+
+
+                        </ViewCell>
+                    </DataTemplate>
+
+                </ListView.ItemTemplate>
+
+
+            </ListView>
+
+            <Button Text="get most sold item" HorizontalOptions="Center" Clicked ="Button_Clicked" FontSize="20" TextColor="White" FontAttributes="Bold" BackgroundColor="#03A9F4"></Button>
+
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>
